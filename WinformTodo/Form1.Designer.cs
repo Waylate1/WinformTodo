@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            txtTaskDescription = new TextBox();
-            lblTaskBoxLabel = new Label();
+            btnClear = new Button();
+            btnAdd = new Button();
             lblDueDate = new Label();
             txtDueDate = new TextBox();
-            btnAdd = new Button();
-            btnClear = new Button();
+            lblTaskBoxLabel = new Label();
+            txtTaskDescription = new TextBox();
             gbTaskList = new GroupBox();
             lvTaskList = new ListView();
             groupBox1.SuspendLayout();
@@ -56,21 +56,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Task Form";
             // 
-            // txtTaskDescription
+            // btnClear
             // 
-            txtTaskDescription.Location = new Point(41, 19);
-            txtTaskDescription.Name = "txtTaskDescription";
-            txtTaskDescription.Size = new Size(427, 23);
-            txtTaskDescription.TabIndex = 1;
+            btnClear.Location = new Point(312, 77);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 6;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
             // 
-            // lblTaskBoxLabel
+            // btnAdd
             // 
-            lblTaskBoxLabel.AutoSize = true;
-            lblTaskBoxLabel.Location = new Point(6, 19);
-            lblTaskBoxLabel.Name = "lblTaskBoxLabel";
-            lblTaskBoxLabel.Size = new Size(29, 15);
-            lblTaskBoxLabel.TabIndex = 2;
-            lblTaskBoxLabel.Text = "Task";
+            btnAdd.Location = new Point(393, 77);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 5;
+            btnAdd.Text = "Add Todo";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // lblDueDate
             // 
@@ -89,23 +92,21 @@
             txtDueDate.Size = new Size(401, 23);
             txtDueDate.TabIndex = 3;
             // 
-            // btnAdd
+            // lblTaskBoxLabel
             // 
-            btnAdd.Location = new Point(393, 77);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 23);
-            btnAdd.TabIndex = 5;
-            btnAdd.Text = "Add Todo";
-            btnAdd.UseVisualStyleBackColor = true;
+            lblTaskBoxLabel.AutoSize = true;
+            lblTaskBoxLabel.Location = new Point(6, 19);
+            lblTaskBoxLabel.Name = "lblTaskBoxLabel";
+            lblTaskBoxLabel.Size = new Size(29, 15);
+            lblTaskBoxLabel.TabIndex = 2;
+            lblTaskBoxLabel.Text = "Task";
             // 
-            // btnClear
+            // txtTaskDescription
             // 
-            btnClear.Location = new Point(312, 77);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
-            btnClear.TabIndex = 6;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
+            txtTaskDescription.Location = new Point(41, 19);
+            txtTaskDescription.Name = "txtTaskDescription";
+            txtTaskDescription.Size = new Size(427, 23);
+            txtTaskDescription.TabIndex = 1;
             // 
             // gbTaskList
             // 
@@ -133,7 +134,8 @@
             Controls.Add(gbTaskList);
             Controls.Add(groupBox1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Todo App";
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             gbTaskList.ResumeLayout(false);

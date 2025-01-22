@@ -14,13 +14,18 @@ namespace WinformTodo
         public DateTime DueDate { get; set; }
         public bool IsDone { get; set; }
 
-        public Todo(string description, DateTime date, bool doneState)
+        public Todo(string description, DateTime date, bool doneState = false)
         {
             ObjectCounter++;
             Id = ObjectCounter;
             TaskDescription = description;
             DueDate = date;
             IsDone = doneState;
+        }
+
+        public override string? ToString()
+        {
+            return $"{Id} - {DueDate} - {TaskDescription}";
         }
     }
 }
