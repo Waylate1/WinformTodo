@@ -14,11 +14,24 @@ namespace WinformTodo
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var date = DateTime.Parse(txtDueDate.Text);
+
             //where we handle the add event
             Todo myTodo = new Todo(txtTaskDescription.Text, DateTime.Parse(txtDueDate.Text));
 
-            MessageBox.Show(myTodo.ToString());
+           lvTaskList.Items.Add(myTodo.ToString());
+
+            ClearForm();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            MessageBox.Show("Form Cleared");
+        }
+        private void ClearForm()
+        {
+            txtTaskDescription.Clear();
+            txtDueDate.Clear();
         }
     }
 }
