@@ -4,9 +4,13 @@ namespace WinformTodo
 {
     public partial class Form1 : Form
     {
+
+        private List<Todo> TaskList { get; set; }
+        
         public Form1()
         {
             InitializeComponent();
+            TaskList = new List<Todo>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,9 +46,29 @@ namespace WinformTodo
             //where we handle the add event
             Todo myTodo = new Todo(txtTaskDescription.Text, DateTime.Parse(txtDueDate.Text));
 
-            lbTaskList.Items.Add(myTodo.ToString());
+            TaskList.Add(myTodo);
+
+            UpdateListBox();
 
             ClearForm();
+        }
+        public void UpdateListBox()
+        {
+            //Clear the contents of the list box
+            lbTaskList.Items.Clear();
+
+            //Transform the list
+            var list = TaskList
+                .Where(t => !t.IsDone)
+                .OrderBy(t => t.DueDate)
+                .ToList();
+            //read in new contents
+            for (int i = 0; i < list.Count; i++)
+            {
+                lbTaskList.Items.Add(list[i].ToString());
+            }
+            //cleanup if needed
+
         }
 
         private void btnClear_Click(object sender, EventArgs e)
