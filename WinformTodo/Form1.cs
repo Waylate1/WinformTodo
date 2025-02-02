@@ -6,7 +6,7 @@ namespace WinformTodo
     {
 
         private List<Todo> TaskList { get; set; }
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -37,12 +37,12 @@ namespace WinformTodo
                 return;
             }
 
-           if (!Validators.IsValidDate(txtDueDate))
+            if (!Validators.IsValidDate(txtDueDate))
             {
                 MessageBox.Show("Date is incorrectly formated please resubmit.");
                 return;
             }
-           
+
             //where we handle the add event
             Todo myTodo = new Todo(txtTaskDescription.Text, DateTime.Parse(txtDueDate.Text));
 
@@ -59,7 +59,7 @@ namespace WinformTodo
 
             //Transform the list
             var list = TaskList
-                .Where(t => !t.IsDone)
+                //s.Where(t => !t.IsDone)
                 .OrderBy(t => t.DueDate)
                 .ToList();
             //read in new contents
@@ -87,6 +87,34 @@ namespace WinformTodo
             if (e.KeyChar == 13)
             {
                 submitForm(sender, e);
+            }
+        }
+
+        private void lbTaskList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show($"Selected Index is: {lbTaskList.SelectedIndex}");
+            int selectedIndex = lbTaskList.SelectedIndex;
+            string selectedItem = (string)lbTaskList.SelectedItem;
+
+            if (selectedIndex == -1)
+            {
+                return;
+            }
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("No item selected at the index.");
+                return;
+            }
+
+            int id = Int32.Parse(selectedItem.Split(" - ")[0]);
+            var todo = TaskList.Find(t => t.Id == id);
+
+            if (todo != null) 
+            {
+                todo.IsDone = !todo.IsDone;
+
+                UpdateListBox();
             }
         }
     }

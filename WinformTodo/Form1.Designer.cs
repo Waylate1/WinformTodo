@@ -129,6 +129,7 @@
             lbTaskList.Name = "lbTaskList";
             lbTaskList.Size = new Size(462, 664);
             lbTaskList.TabIndex = 0;
+            lbTaskList.SelectedIndexChanged += lbTaskList_SelectedIndexChanged;
             // 
             // Form1
             // 
