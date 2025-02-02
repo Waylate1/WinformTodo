@@ -36,7 +36,7 @@
             lblTaskBoxLabel = new Label();
             txtTaskDescription = new TextBox();
             gbTaskList = new GroupBox();
-            lvTaskList = new ListView();
+            lbTaskList = new ListBox();
             groupBox1.SuspendLayout();
             gbTaskList.SuspendLayout();
             SuspendLayout();
@@ -74,7 +74,7 @@
             btnAdd.TabIndex = 5;
             btnAdd.Text = "Add Todo";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += submitForm;
             // 
             // lblDueDate
             // 
@@ -92,6 +92,7 @@
             txtDueDate.PlaceholderText = "2025-01-20";
             txtDueDate.Size = new Size(401, 23);
             txtDueDate.TabIndex = 3;
+            txtDueDate.KeyPress += Form1_KeyPress;
             // 
             // lblTaskBoxLabel
             // 
@@ -108,10 +109,11 @@
             txtTaskDescription.Name = "txtTaskDescription";
             txtTaskDescription.Size = new Size(427, 23);
             txtTaskDescription.TabIndex = 1;
+            txtTaskDescription.KeyPress += Form1_KeyPress;
             // 
             // gbTaskList
             // 
-            gbTaskList.Controls.Add(lvTaskList);
+            gbTaskList.Controls.Add(lbTaskList);
             gbTaskList.Location = new Point(12, 150);
             gbTaskList.Name = "gbTaskList";
             gbTaskList.Size = new Size(468, 698);
@@ -119,13 +121,14 @@
             gbTaskList.TabStop = false;
             gbTaskList.Text = "Task List";
             // 
-            // lvTaskList
+            // lbTaskList
             // 
-            lvTaskList.Location = new Point(0, 22);
-            lvTaskList.Name = "lvTaskList";
-            lvTaskList.Size = new Size(468, 670);
-            lvTaskList.TabIndex = 0;
-            lvTaskList.UseCompatibleStateImageBehavior = false;
+            lbTaskList.FormattingEnabled = true;
+            lbTaskList.ItemHeight = 15;
+            lbTaskList.Location = new Point(0, 22);
+            lbTaskList.Name = "lbTaskList";
+            lbTaskList.Size = new Size(462, 664);
+            lbTaskList.TabIndex = 0;
             // 
             // Form1
             // 
@@ -153,6 +156,6 @@
         private Button btnClear;
         private Button btnAdd;
         private GroupBox gbTaskList;
-        private ListView lvTaskList;
+        private ListBox lbTaskList;
     }
 }
