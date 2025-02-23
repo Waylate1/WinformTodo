@@ -36,13 +36,14 @@
             lblTaskBoxLabel = new Label();
             txtTaskDescription = new TextBox();
             gbTaskList = new GroupBox();
-            lbTaskList = new ListBox();
+            fpTasks = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
             gbTaskList.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox1.Controls.Add(btnClear);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(lblDueDate);
@@ -113,7 +114,7 @@
             // 
             // gbTaskList
             // 
-            gbTaskList.Controls.Add(lbTaskList);
+            gbTaskList.Controls.Add(fpTasks);
             gbTaskList.Location = new Point(12, 150);
             gbTaskList.Name = "gbTaskList";
             gbTaskList.Size = new Size(468, 698);
@@ -121,20 +122,20 @@
             gbTaskList.TabStop = false;
             gbTaskList.Text = "Task List";
             // 
-            // lbTaskList
+            // fpTasks
             // 
-            lbTaskList.FormattingEnabled = true;
-            lbTaskList.ItemHeight = 15;
-            lbTaskList.Location = new Point(0, 22);
-            lbTaskList.Name = "lbTaskList";
-            lbTaskList.Size = new Size(462, 664);
-            lbTaskList.TabIndex = 0;
-            lbTaskList.SelectedIndexChanged += lbTaskList_SelectedIndexChanged;
+            fpTasks.AutoScroll = true;
+            fpTasks.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            fpTasks.Location = new Point(6, 22);
+            fpTasks.Name = "fpTasks";
+            fpTasks.Size = new Size(456, 670);
+            fpTasks.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(498, 860);
             Controls.Add(gbTaskList);
             Controls.Add(groupBox1);
@@ -157,6 +158,6 @@
         private Button btnClear;
         private Button btnAdd;
         private GroupBox gbTaskList;
-        private ListBox lbTaskList;
+        private FlowLayoutPanel fpTasks;
     }
 }

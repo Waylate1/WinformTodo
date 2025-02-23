@@ -47,7 +47,7 @@ namespace WinformTodo
             Todo myTodo = new Todo(txtTaskDescription.Text, DateTime.Parse(txtDueDate.Text));
 
             TaskList.Add(myTodo);
-
+            fpTasks.Controls.Add(new TaskControl(myTodo));
             UpdateListBox();
 
             ClearForm();
@@ -55,7 +55,7 @@ namespace WinformTodo
         public void UpdateListBox()
         {
             //Clear the contents of the list box
-            lbTaskList.Items.Clear();
+            //lbTaskList.Items.Clear();
 
             //Transform the list
             var list = TaskList
@@ -65,7 +65,7 @@ namespace WinformTodo
             //read in new contents
             for (int i = 0; i < list.Count; i++)
             {
-                lbTaskList.Items.Add(list[i].ToString());
+                //lbTaskList.Items.Add(list[i].ToString());
             }
             //cleanup if needed
 
@@ -93,29 +93,29 @@ namespace WinformTodo
         private void lbTaskList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show($"Selected Index is: {lbTaskList.SelectedIndex}");
-            int selectedIndex = lbTaskList.SelectedIndex;
-            string selectedItem = (string)lbTaskList.SelectedItem;
+            //int selectedIndex = lbTaskList.SelectedIndex;
+            //string selectedItem = (string)lbTaskList.SelectedItem;
 
-            if (selectedIndex == -1)
-            {
-                return;
-            }
+            //if (selectedIndex == -1)
+            //{
+                //return;
+           // }
 
-            if (selectedItem == null)
-            {
-                MessageBox.Show("No item selected at the index.");
-                return;
-            }
+            //if (selectedItem == null)
+            //{
+            //    MessageBox.Show("No item selected at the index.");
+            //    return;
+            //}
 
-            int id = Int32.Parse(selectedItem.Split(" - ")[0]);
-            var todo = TaskList.Find(t => t.Id == id);
+            //int id = Int32.Parse(selectedItem.Split(" - ")[0]);
+            //var todo = TaskList.Find(t => t.Id == id);
 
-            if (todo != null) 
-            {
-                todo.IsDone = !todo.IsDone;
+            //if (todo != null) 
+            //{
+            //    todo.IsDone = !todo.IsDone;
 
-                UpdateListBox();
-            }
+            //    UpdateListBox();
+            //}
         }
     }
 }
